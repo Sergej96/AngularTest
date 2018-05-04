@@ -1,4 +1,4 @@
-let docsPage = require('../docs_page.js');
+let docsPage = require('../docs_Page.js');
 
 describe('test https://angular.io/docs', function () {
     beforeEach(async function () {
