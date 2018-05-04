@@ -1,0 +1,11 @@
+{
+  "name": "trejgo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Trejgo",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "^5.3.1"
+  }
+}
