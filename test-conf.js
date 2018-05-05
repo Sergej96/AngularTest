@@ -13,7 +13,7 @@ updateWebdriverManager.on('close', function (wmUpdateExitCode) {
         shell: true
     });
     setTimeout(function () {
-        tests = spawn('protractor.conf.js', {
+        tests = spawn('node protractor.conf.js', {
             stdio: 'inherit',
             shell: true
         });
