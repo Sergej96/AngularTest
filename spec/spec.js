@@ -7,30 +7,29 @@ describe('test https://angular.io/docs', function () {
     });
 
     it('Open https://angular.io/docs', async function () {
-        expect(browser.getCurrentUrl()).toContain('https://angular.io/docs');
-        expect(docsPage.buttonGettingStarted.getText()).toEqual('GETTING STARTED');
-        expect(docsPage.buttonTutorial.getText()).toEqual('TUTORIAL');
-        expect(docsPage.buttonFundamentals.getText()).toEqual('FUNDAMENTALS');
-        expect(docsPage.buttonTechniques.getText()).toEqual('TECHNIQUES');
-        expect(docsPage.buttonApi.getText()).toEqual('API');
-        expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v5.2.10)');
+        await expect(browser.getCurrentUrl()).toContain('https://angular.io/docs');
+        await expect(docsPage.buttonGettingStarted.getText()).toEqual('GETTING STARTED');
+        await expect(docsPage.buttonTutorial.getText()).toEqual('TUTORIAL');
+        await expect(docsPage.buttonFundamentals.getText()).toEqual('FUNDAMENTALS');
+        await expect(docsPage.buttonTechniques.getText()).toEqual('TECHNIQUES');
+        await expect(docsPage.buttonApi.getText()).toEqual('API');
+        await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.0)');
 
     });
-    it('Test serch', async function () {
+    xit('Test serch', async function () {
+        ;
         await docsPage.fieldSearch.sendKeys('http');
-       await browser.sleep(10000);
-       await element.all(by.className('search-area ng-star-inserted')).then(function (array) {
-           expect(array.length).toBe(4);
-       });
-
+        await browser.sleep(10000);
+        var array = element.all(by.className('search-area ng-star-inserted')).length;
+        expect(array).toBe(4);   
     });
 
-    it('Negative test serch', async function () {
+    it('Negative test serch', async function (done) {
         await docsPage.fieldSearch.sendKeys('http1');
         await browser.sleep(10000);
-        await element(by.css('[class="search-results"]')).$('[class="ng-star-inserted"]').getText().then(function (text) {
-            expect(text).toEqual('No results found.');
-        });
+        element(by.css('.search-results')).$('.ng-star-inserted').getText()
+            .then((text) => expect(text).toEqual('No results found.'))
+            .then(()=>done());
 
     });
 
@@ -66,19 +65,20 @@ describe('test https://angular.io/docs', function () {
         browser.ignoreSynchronization = false;
     });
 
-    it('Click on Docs menu', function () {
-        docsPage.buttonDoscMenu.click()
+    it('Click on Docs menu', async function (done) {
+        await docsPage.buttonDoscMenu.click()
             .then(() => element(by.css('mat-sidenav-content')))
             .then((el) => el.getAttribute('style'))
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 0px; margin-right: 0px;');
-            });
-        docsPage.buttonDoscMenu.click()
+            })
+            .then(()=>docsPage.buttonDoscMenu.click())
             .then(() => element(by.css('mat-sidenav-content')))
             .then((el) => el.getAttribute('style'))
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 268px; margin-right: 0px;');
-            });
+            })
+            .then(()=>done());
     });
 
     it('Test link "8.HTTP" click', async function () {
