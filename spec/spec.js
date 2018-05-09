@@ -17,7 +17,6 @@ describe('test https://angular.io/docs', function () {
 
     });
     xit('Test serch', async function () {
-        ;
         await docsPage.fieldSearch.sendKeys('http');
         await browser.sleep(10000);
         var array = element.all(by.className('search-area ng-star-inserted')).length;
@@ -29,7 +28,7 @@ describe('test https://angular.io/docs', function () {
         await browser.sleep(10000);
         element(by.css('.search-results')).$('.ng-star-inserted').getText()
             .then((text) => expect(text).toEqual('No results found.'))
-            .then(()=>done());
+            .then(() => done());
 
     });
 
@@ -78,7 +77,7 @@ describe('test https://angular.io/docs', function () {
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 268px; margin-right: 0px;');
             })
-            .then(()=>done());
+            .then(() => done());
     });
 
     it('Test link "8.HTTP" click', async function () {

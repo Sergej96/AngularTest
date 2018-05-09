@@ -1,2 +1,7 @@
 .idea/
+#NodeJS
 node_modules/
+
+#faile Allure
+allure-results
+allure-report
