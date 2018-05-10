@@ -16,11 +16,16 @@ describe('test https://angular.io/docs', function () {
         await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.0)');
 
     });
-    xit('Test serch', async function () {
-        await docsPage.fieldSearch.sendKeys('http');
+    it('Test serch', async function (done) {
+        /*await docsPage.fieldSearch.sendKeys('http');
         await browser.sleep(10000);
         var array = element.all(by.className('search-area ng-star-inserted')).length;
-        expect(array).toBe(4);   
+        expect(array).toBe(4);*/
+        await docsPage.fieldSearch.sendKeys('http');
+        await browser.sleep(10000);
+        element.all(by.className('search-area ng-star-inserted'))
+            .then((array) => expect(array.length).toBe(4))
+            .then(() => done());
     });
 
     it('Negative test serch', async function (done) {
@@ -71,7 +76,7 @@ describe('test https://angular.io/docs', function () {
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 0px; margin-right: 0px;');
             })
-            .then(()=>docsPage.buttonDoscMenu.click())
+            .then(() => docsPage.buttonDoscMenu.click())
             .then(() => element(by.css('mat-sidenav-content')))
             .then((el) => el.getAttribute('style'))
             .then(function (attr) {
