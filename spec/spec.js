@@ -13,7 +13,7 @@ describe('test https://angular.io/docs', function () {
         await expect(docsPage.buttonFundamentals.getText()).toEqual('FUNDAMENTALS');
         await expect(docsPage.buttonTechniques.getText()).toEqual('TECHNIQUES');
         await expect(docsPage.buttonApi.getText()).toEqual('API');
-        await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.0)');
+        await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.1)');
 
     });
     it('Test serch', async function (done) {
@@ -25,7 +25,8 @@ describe('test https://angular.io/docs', function () {
         await browser.sleep(10000);
         element.all(by.className('search-area ng-star-inserted'))
             .then((array) => expect(array.length).toBe(4))
-            .then(() => done());
+            .then(() => done())
+            .catch(done.error);
     });
 
     it('Negative test serch', async function (done) {
@@ -33,7 +34,8 @@ describe('test https://angular.io/docs', function () {
         await browser.sleep(10000);
         element(by.css('.search-results')).$('.ng-star-inserted').getText()
             .then((text) => expect(text).toEqual('No results found.'))
-            .then(() => done());
+            .then(() => done())
+            .catch(done.error);
 
     });
 
@@ -82,13 +84,13 @@ describe('test https://angular.io/docs', function () {
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 268px; margin-right: 0px;');
             })
-            .then(() => done());
+            .then(() => done())
+            .catch(done.error);
     });
 
     it('Test link "8.HTTP" click', async function () {
         await docsPage.buttonTutorial.click();
         await docsPage.buttonHttp.click();
-        var title = element(by.css('a[title="Link to this heading"]'));
         expect(browser.getCurrentUrl()).toEqual('https://angular.io/tutorial/toh-pt6');
 
     });
