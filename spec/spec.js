@@ -25,8 +25,8 @@ describe('test https://angular.io/docs', function () {
         await browser.sleep(10000);
         element.all(by.className('search-area ng-star-inserted'))
             .then((array) => expect(array.length).toBe(4))
-            .then(() => done())
-            .catch(done.error);
+            .then(() => done());
+            //.catch(done.error);
     });
 
     it('Negative test serch', async function (done) {
@@ -34,8 +34,8 @@ describe('test https://angular.io/docs', function () {
         await browser.sleep(10000);
         element(by.css('.search-results')).$('.ng-star-inserted').getText()
             .then((text) => expect(text).toEqual('No results found.'))
-            .then(() => done())
-            .catch(done.error);
+            .then(() => done());
+            //.catch(done.error);
 
     });
 
@@ -84,8 +84,8 @@ describe('test https://angular.io/docs', function () {
             .then(function (attr) {
                 expect(attr).toBe('margin-left: 268px; margin-right: 0px;');
             })
-            .then(() => done())
-            .catch(done.error);
+            .then(() => done());
+            //.catch(done.error);
     });
 
     it('Test link "8.HTTP" click', async function () {
