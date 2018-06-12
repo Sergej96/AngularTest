@@ -6,7 +6,7 @@ let docsPage = function () {
     this.buttonTechniques = element(by.css('aio-nav-menu')).$('[title="Techniques for putting Angular to work in your environment"]');
     this.buttonApi = element(by.css('aio-nav-menu')).$('[title="Details of the Angular classes and values."]');
     this.buttonVersionSite = element(by.css('.form-select-menu')).$('.form-select-button');
-    this.buttonHttp = element.all(by.css('aio-nav-item.ng-star-inserted')).get(9);//$('a[title="Part 8: Use HTTP to retrieve and save hero data."]')
+    this.buttonHttp = element.all(by.css('aio-nav-item.ng-star-inserted')).get(9);
     this.fieldSearch = element(by.css('input'));
     this.rightMenuLink = element.all(by.css('ul.toc-list li')).get(2);
     this.linkChineseLangVersion = element(by.css('.link[title="中文版"]'));

@@ -13,14 +13,10 @@ describe('test https://angular.io/docs', function () {
         await expect(docsPage.buttonFundamentals.getText()).toEqual('FUNDAMENTALS');
         await expect(docsPage.buttonTechniques.getText()).toEqual('TECHNIQUES');
         await expect(docsPage.buttonApi.getText()).toEqual('API');
-        await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.2)');
+        await expect(docsPage.buttonVersionSite.getText()).toEqual('/stable (v6.0.\d+)/');
 
     });
     it('Test serch', async function (done) {
-        /*await docsPage.fieldSearch.sendKeys('http');
-        await browser.sleep(10000);
-        var array = element.all(by.className('search-area ng-star-inserted')).length;
-        expect(array).toBe(4);*/
         await docsPage.fieldSearch.sendKeys('http');
         await browser.sleep(10000);
         element.all(by.className('search-area ng-star-inserted'))
