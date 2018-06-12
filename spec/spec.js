@@ -13,7 +13,7 @@ describe('test https://angular.io/docs', function () {
         await expect(docsPage.buttonFundamentals.getText()).toEqual('FUNDAMENTALS');
         await expect(docsPage.buttonTechniques.getText()).toEqual('TECHNIQUES');
         await expect(docsPage.buttonApi.getText()).toEqual('API');
-        await expect(docsPage.buttonVersionSite.getText()).toEqual('/stable (v6.0.\d+)/');
+        await expect(docsPage.buttonVersionSite.getText()).toEqual('stable (v6.0.4)');
 
     });
     it('Test serch', async function (done) {
